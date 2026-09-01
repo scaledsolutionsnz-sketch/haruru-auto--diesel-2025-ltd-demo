@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haruru Auto &amp; Diesel | Mechanic &amp; WOF, Paihia</title>
+<meta name="description" content="Haruru Auto & Diesel is the workshop at Haruru Falls Industrial Estate. WOF inspections, petrol and diesel servicing, brakes, tyres and repairs for Paihia, Ōpua, Waitangi and the wider Bay of Islands. Call 09 402 7951.">
+<meta property="og:title" content="Haruru Auto &amp; Diesel | Mechanic &amp; WOF, Paihia">
+<meta property="og:description" content="WOF, servicing and diesel repairs at Haruru Falls, five minutes from Paihia. Call 09 402 7951.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=1200&q=70">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23e8622c'/%3E%3Ctext x='32' y='46' font-family='Arial Black,Arial' font-size='40' font-weight='900' fill='%2316181d' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16181d;
+  --ink2:#1e2128;
+  --ink3:#262a33;
+  --bone:#f1efe9;
+  --paper:#faf9f6;
+  --accent:#e8622c;
+  --accent-deep:#c94e1e;
+  --line:rgba(255,255,255,.12);
+  --line-dark:rgba(22,24,29,.14);
+  --txt-on-dark:#e9e7e1;
+  --txt-mute-dark:#b8bcc6;
+  --txt-on-light:#23262d;
+  --txt-mute-light:#5b5f6a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+img{image-orientation:from-image;max-width:100%}
+body{
+  font-family:'Barlow',sans-serif;
+  background:var(--ink);
+  color:var(--txt-on-dark);
+  font-size:16px;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+h1,h2,h3,.disp{font-family:'Barlow Condensed',sans-serif;line-height:1.08;text-transform:uppercase;letter-spacing:.01em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+
+/* ---------- intro overlay ---------- */
+#intro{
+  position:fixed;inset:0;z-index:200;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .7s cubic-bezier(.7,0,.3,1),opacity .5s ease .3s;
+}
+#intro .mark{font-family:'Barlow Condensed';font-weight:700;font-size:clamp(2rem,6vw,3.6rem);text-transform:uppercase;color:var(--txt-on-dark);opacity:0;transform:translateY(18px);animation:introIn .7s cubic-bezier(.2,.8,.3,1) .15s forwards}
+#intro .mark span{color:var(--accent)}
+#intro.done{transform:translateY(-100%);opacity:0;pointer-events:none}
+@keyframes introIn{to{opacity:1;transform:none}}
+
+/* ---------- nav ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(22,24,29,.82);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1160px;margin:0 auto;padding:0 20px}
+.logo{font-family:'Barlow Condensed';font-weight:700;font-size:1.35rem;text-transform:uppercase;letter-spacing:.02em;white-space:nowrap}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:26px;list-style:none}
+.nav-links a:not(.nav-call){font-weight:500;font-size:.95rem;color:var(--txt-mute-dark);transition:color .2s}
+.nav-links a:not(.nav-call):hover{color:#fff}
+.nav-call{
+  display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;
+  background:var(--accent);color:#16181d;font-weight:700;font-size:.95rem;line-height:1;
+  transition:background .2s,transform .15s;
+}
+.nav-call:hover{background:#f0733f;color:#16181d}
+.nav-call:active{transform:scale(.98)}
+.nav-call svg{flex:none}
+#navToggle{display:none;background:none;border:1px solid var(--line);width:44px;height:44px;align-items:center;justify-content:center;cursor:pointer;color:var(--txt-on-dark)}
+#mobileMenu{display:none}
+@media(max-width:840px){
+  .nav-links{display:none}
+  #navToggle{display:flex}
+  #mobileMenu{
+    display:block;position:fixed;top:68px;left:0;right:0;z-index:99;
+    background:var(--ink2);border-bottom:1px solid var(--line);
+    transform:translateY(-110%);transition:transform .3s ease;
+  }
+  #mobileMenu.open{transform:none}
+  #mobileMenu a{display:block;padding:15px 24px;border-top:1px solid var(--line);font-weight:500}
+  #mobileMenu a:hover{background:var(--ink3)}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100dvh;background:var(--ink);
+  display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;
+}
+.hero-slides{position:absolute;inset:0}
+.hero-slides img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.6s ease;
+  filter:saturate(.85) contrast(1.05);
+}
+.hero-slides img.on{opacity:1}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(22,24,29,.72) 0%,rgba(22,24,29,.5) 45%,rgba(22,24,29,.88) 100%);
+}
+.hero-inner{position:relative;z-index:2;max-width:1160px;margin:0 auto;padding:100px 20px 60px;width:100%}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:.8rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:18px;
+}
+.hero-eyebrow::before{content:"";display:block;width:34px;height:2px;background:var(--accent)}
+.hero h1{
+  font-size:clamp(2.7rem,7vw,4.6rem);font-weight:700;color:#fff;
+  max-width:15ch;margin-bottom:18px;
+}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:1.1rem;color:var(--txt-mute-dark);max-width:44ch;margin-bottom:30px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:0 26px;font-weight:700;font-size:1rem;line-height:1;
+  transition:background .2s,color .2s,transform .15s;cursor:pointer;
+}
+.btn:active{transform:scale(.98)}
+.btn-solid{background:var(--accent);color:#16181d}
+.btn-solid:hover{background:#f0733f;color:#16181d}
+.btn-ghost{border:1px solid rgba(255,255,255,.4);color:#fff;background:rgba(22,24,29,.25)}
+.btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.hero-review{
+  max-width:420px;background:rgba(30,33,40,.55);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.16);
+  padding:18px 20px;position:relative;min-height:132px;
+}
+.hero-review .hr-tag{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-mute-dark);margin-bottom:6px}
+.hero-review .hr-stage{display:grid}
+.hr-quote{grid-area:1/1;opacity:0;transition:opacity .8s ease;pointer-events:none}
+.hr-quote.on{opacity:1;pointer-events:auto}
+.hr-stars{color:var(--accent);display:flex;gap:2px;margin-bottom:6px}
+.hr-text{font-size:.95rem;color:var(--txt-on-dark);margin-bottom:6px}
+.hr-name{font-size:.85rem;font-weight:600;color:var(--txt-mute-dark)}
+
+/* ---------- section base ---------- */
+section{position:relative}
+.sec-pad{padding:90px 0}
+.sec-head{margin-bottom:48px}
+.sec-head h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:700}
+.sec-head p{margin-top:12px;max-width:60ch}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
+.reveal.vis{opacity:1;transform:none}
+
+/* ---------- services (light band) ---------- */
+#services{background:var(--bone);color:var(--txt-on-light)}
+#services .sec-head p{color:var(--txt-mute-light)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.svc-card{background:var(--paper);border:1px solid var(--line-dark);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
+.svc-card:hover{transform:translateY(-5px);box-shadow:0 16px 32px -14px rgba(22,24,29,.35)}
+.svc-card .ph{position:relative;aspect-ratio:16/9;overflow:hidden}
+.svc-card .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(.85) contrast(1.05);transition:transform .5s ease;display:block}
+.svc-card:hover .ph img{transform:scale(1.05)}
+.svc-card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,24,29,0) 55%,rgba(22,24,29,.45))}
+.svc-body{padding:22px 22px 26px}
+.svc-label{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:8px}
+.svc-body h3{font-size:1.5rem;margin-bottom:8px;color:var(--txt-on-light)}
+.svc-body p{font-size:.95rem;color:var(--txt-mute-light)}
+
+/* ---------- about ---------- */
+#about{background:var(--paper);color:var(--txt-on-light)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-ph{position:relative}
+.about-ph img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:saturate(.85) contrast(1.05)}
+.about-ph::after{content:"";position:absolute;left:0;bottom:0;width:88px;height:10px;background:var(--accent)}
+.about-copy h2{font-size:clamp(2rem,4.5vw,2.8rem);margin-bottom:18px}
+.about-copy p{color:var(--txt-mute-light);margin-bottom:16px}
+.about-list{list-style:none;margin-top:10px}
+.about-list li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;font-weight:500}
+.about-list svg{flex:none;margin-top:4px;color:var(--accent-deep)}
+
+/* ---------- crew (dark) ---------- */
+#crew{background:var(--ink2)}
+#crew .sec-head p{color:var(--txt-mute-dark)}
+.badge{
+  display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--line);padding:5px 12px;color:var(--txt-mute-dark);margin-bottom:14px;
+}
+.crew-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.crew-card{border:1px solid var(--line);padding:34px 24px;text-align:center;background:var(--ink);transition:border-color .25s}
+.crew-card:hover{border-color:var(--accent)}
+.avatar{
+  width:88px;height:88px;border-radius:50%;margin:0 auto 18px;
+  background:var(--ink3);border:2px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow Condensed';font-weight:700;font-size:1.9rem;color:var(--txt-on-dark);
+}
+.crew-card h3{font-size:1.35rem;margin-bottom:4px}
+.crew-card p{font-size:.92rem;color:var(--txt-mute-dark)}
+
+/* ---------- reviews (bone) ---------- */
+#reviews{background:var(--bone);color:var(--txt-on-light)}
+#reviews .badge{border-color:var(--line-dark);color:var(--txt-mute-light)}
+#reviews .sec-head p{color:var(--txt-mute-light)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:40px}
+.rev-card{background:var(--paper);border:1px solid var(--line-dark);padding:26px}
+.rev-stars{display:flex;gap:3px;color:var(--accent-deep);margin-bottom:12px}
+.rev-card blockquote{font-size:.98rem;color:var(--txt-on-light);margin-bottom:14px}
+.rev-meta{font-size:.88rem;color:var(--txt-mute-light)}
+.rev-meta strong{color:var(--txt-on-light);font-weight:600}
+.rev-more{display:flex;justify-content:center}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--ink3)}
+
+/* ---------- review banner ---------- */
+#leave-review{background:var(--ink3)}
+.lr-inner{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap;padding:56px 0}
+.lr-inner h2{font-size:clamp(1.7rem,3.5vw,2.4rem)}
+.lr-inner p{color:var(--txt-mute-dark);margin-top:6px;max-width:48ch}
+
+/* ---------- contact ---------- */
+#contact{background:var(--ink2)}
+#contact .sec-head p{color:var(--txt-mute-dark)}
+.contact-card{
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--ink);border:1px solid var(--line);
+  max-width:1120px;margin:0 auto;overflow:hidden;
+}
+.contact-map{min-height:460px}
+.contact-map iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.25) contrast(1.05)}
+.contact-info{padding:40px 36px;display:flex;flex-direction:column;gap:14px}
+.contact-info .btn{width:100%}
+.c-rows{margin-top:10px;display:flex;flex-direction:column;gap:2px}
+.c-row{display:flex;gap:14px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line);font-size:.95rem}
+.c-row svg{flex:none;color:var(--accent);margin-top:3px}
+.c-row .c-label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-mute-dark)}
+.c-row a:hover{color:var(--accent)}
+.socials{display:flex;gap:12px;margin-top:14px}
+.socials a{
+  width:44px;height:44px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+  color:var(--txt-on-dark);transition:border-color .2s,color .2s,background .2s;
+}
+.socials a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30px}
+.foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:38px}
+.foot-brand{max-width:340px}
+.foot-brand .logo{font-size:1.5rem;display:block;margin-bottom:10px}
+.foot-brand p{font-size:.92rem;color:var(--txt-mute-dark)}
+.foot-col h3{font-family:'Barlow Condensed';text-transform:uppercase;font-size:1.05rem;letter-spacing:.06em;margin-bottom:14px}
+.foot-col ul{list-style:none}
+.foot-col li{margin-bottom:9px}
+.foot-col a{font-size:.92rem;color:var(--txt-mute-dark);transition:color .2s}
+.foot-col a:hover{color:var(--accent)}
+.foot-base{border-top:1px solid var(--line);padding-top:22px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.85rem;color:var(--txt-mute-dark)}
+.foot-base a:hover{color:var(--accent)}
+
+/* ---------- responsive ---------- */
+@media(max-width:960px){
+  .svc-grid,.crew-grid,.rev-grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{gap:40px}
+}
+@media(max-width:768px){
+  .sec-pad{padding:64px 0}
+  .about-grid{grid-template-columns:1fr}
+  .contact-card{grid-template-columns:1fr}
+  .contact-map{min-height:320px;order:2}
+  .contact-info{order:1}
+  .lr-inner{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:600px){
+  .svc-grid,.crew-grid,.rev-grid{grid-template-columns:1fr}
+  .hero-inner{padding-top:110px}
+  .hero h1{font-size:clamp(2.4rem,11vw,3rem)}
+  .btn{width:100%}
+  .hero-ctas{flex-direction:column}
+  .hero-review{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+::selection{background:var(--accent);color:#16181d}
+</style>
+</head>
+<body>
+
+<div id="intro" aria-hidden="true"><div class="mark">Haruru <span>Auto &amp; Diesel</span></div></div>
+
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="#top">Haruru <span>Auto &amp; Diesel</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">Workshop</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a class="nav-call" href="tel:+6494027951">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        09 402 7951</a></li>
+    </ul>
+    <button id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+</header>
+<div id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#about">Workshop</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:+6494027951"><strong>Call 09 402 7951</strong></a>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slides" aria-hidden="true">
+    <img class="on" src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?w=1800&q=72" alt="" fetchpriority="high" width="1800" height="1200">
+    <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1800&q=72" alt="" loading="lazy" width="1800" height="1350">
+    <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1800&q=72" alt="" loading="lazy" width="1800" height="1200">
+  </div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Haruru Falls, Bay of Islands</p>
+    <h1>WOF, servicing &amp; <em>diesel repairs</em> done right here</h1>
+    <p class="hero-sub">The workshop on Te Kahu Street, five minutes from Paihia. Cars, utes, 4WDs and diesels, petrol or diesel, booked in fast and fixed properly.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-solid" href="tel:+6494027951">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call 09 402 7951</a>
+      <a class="btn btn-ghost" href="#contact">Get a quote</a>
+    </div>
+    <div class="hero-review" aria-live="polite">
+      <p class="hr-tag">Example reviews</p>
+      <div class="hr-stage">
+      <div class="hr-quote on">
+        <div class="hr-stars" data-stars="5"></div>
+        <p class="hr-text">"Booked a WOF Monday, sorted by smoko. Fair price too."</p>
+        <p class="hr-name">Tane M, Haruru</p>
+      </div>
+      <div class="hr-quote">
+        <div class="hr-stars" data-stars="5"></div>
+        <p class="hr-text">"They found the injector fault two other shops missed."</p>
+        <p class="hr-name">Rachael P, Kerikeri</p>
+      </div>
+      <div class="hr-quote">
+        <div class="hr-stars" data-stars="5"></div>
+        <p class="hr-text">"Ute broke down towing the boat at Ōpua. They got us moving same day."</p>
+        <p class="hr-name">Grant W, Ōpua</p>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>What we do in the workshop</h2>
+      <p>Petrol and diesel, daily drivers to work fleets. If it rolls on wheels around the Bay of Islands, we service it.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc-card reveal">
+        <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1599256872237-5dcc0fbe9668?w=900&q=70" alt="Technician inspecting the underside of a vehicle" width="900" height="506"></div>
+        <div class="svc-body">
+          <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Inspections</span>
+          <h3>WOF inspections</h3>
+          <p>Book your warrant, get a straight answer. If it fails, we quote the repairs before touching a spanner.</p>
+        </div>
+      </article>
+      <article class="svc-card reveal">
+        <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=900&q=70" alt="Fresh oil being poured into an engine" width="900" height="506"></div>
+        <div class="svc-body">
+          <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Servicing</span>
+          <h3>Petrol &amp; diesel servicing</h3>
+          <p>Oil, filters, fluids and a proper once-over, using parts from BNT, Repco and other trade suppliers.</p>
+        </div>
+      </article>
+      <article class="svc-card reveal">
+        <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=900&q=70" alt="Rack of workshop hand tools" width="900" height="506"></div>
+        <div class="svc-body">
+          <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Mechanical</span>
+          <h3>Brakes, clutches &amp; exhausts</h3>
+          <p>Squeals, shudders and rattles diagnosed and fixed. Transmissions and driveline work handled in-house.</p>
+        </div>
+      </article>
+      <article class="svc-card reveal">
+        <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1578844251758-2f71da64c96f?w=900&q=70" alt="Stack of tyres ready for fitting" width="900" height="506"></div>
+        <div class="svc-body">
+          <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>Tyres</span>
+          <h3>Tyres &amp; wheel alignments</h3>
+          <p>New tyres, puncture repairs and alignments, so the ute tracks straight on the gravel and the seal.</p>
+        </div>
+      </article>
+      <article class="svc-card reveal">
+        <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=900&q=70" alt="Engine bay showing belts and charging system" width="900" height="506"></div>
+        <div class="svc-body">
+          <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Electrical</span>
+          <h3>Batteries &amp; charging systems</h3>
+          <p>Battery testing, replacement and charging faults traced, before a flat battery leaves you stranded at the boat ramp.</p>
+        </div>
+      </article>
+      <article class="svc-card reveal">
+        <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1615906655593-ad0386982a0f?w=900&q=70" alt="Mechanic working on an engine bay in the workshop" width="900" height="506"></div>
+        <div class="svc-body">
+          <span class="svc-label"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 0 4 0m-4 0 1.5-9h11L19 17m0 0a2 2 0 1 1-4 0"/></svg>Breakdowns</span>
+          <h3>Breakdowns &amp; recovery</h3>
+          <p>Broken down between Kawakawa and Kerikeri? Call the workshop and we will talk you through the next step.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec-pad">
+  <div class="wrap about-grid">
+    <div class="about-ph reveal">
+      <img loading="lazy" src="https://images.unsplash.com/photo-1504222490345-c075b6008014?w=1000&q=70" alt="Wall of workshop tools at Haruru Auto and Diesel" width="1000" height="750">
+    </div>
+    <div class="about-copy reveal">
+      <h2>The local workshop at Haruru Falls</h2>
+      <p>Haruru Auto &amp; Diesel runs out of the industrial estate on Te Kahu Street, a short drive from Paihia, Waitangi and Ōpua. Locals drop the car in on the way to work and pick it up on the way home.</p>
+      <p>You get a clear quote before work starts, a phone call if we find anything extra, and an invoice that matches what we said. That is the whole system.</p>
+      <ul class="about-list">
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Locally owned and run in Haruru</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Quotes agreed before any work starts</li>
+        <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Petrol and diesel, cars to light commercials</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CREW -->
+<section id="crew" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="badge">Example team</span>
+      <h2>Who is on the tools</h2>
+      <p>A small crew that knows the vehicles of the Bay because they drive the same roads.</p>
+    </div>
+    <div class="crew-grid">
+      <div class="crew-card reveal">
+        <div class="avatar">OW</div>
+        <h3>Owner / Lead Technician</h3>
+        <p>Runs the workshop, quotes the jobs and does the diagnostic head-scratching.</p>
+      </div>
+      <div class="crew-card reveal">
+        <div class="avatar">WT</div>
+        <h3>Workshop Technician</h3>
+        <p>Servicing, brakes, tyres and the steady flow of WOF repairs.</p>
+      </div>
+      <div class="crew-card reveal">
+        <div class="avatar">SB</div>
+        <h3>Service &amp; Bookings</h3>
+        <p>Answers the phone, books you in and keeps the parts orders moving.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="badge">Example reviews</span>
+      <h2>What customers say</h2>
+      <p>Written as examples for this demo. The live site pulls the workshop's real Google reviews.</p>
+    </div>
+    <div class="rev-grid">
+      <article class="rev-card reveal">
+        <div class="rev-stars" data-stars="5"></div>
+        <blockquote>"Booked a WOF on Monday, done by smoko Tuesday. Failed on a wiper blade, they swapped it on the spot instead of making me rebook. Fair price."</blockquote>
+        <p class="rev-meta"><strong>Tane M</strong> · Haruru</p>
+      </article>
+      <article class="rev-card reveal">
+        <div class="rev-stars" data-stars="5"></div>
+        <blockquote>"Our Hilux had an injector fault two other shops could not find. These guys traced it in an afternoon and had us back on the farm by Friday."</blockquote>
+        <p class="rev-meta"><strong>Rachael P</strong> · Kerikeri</p>
+      </article>
+      <article class="rev-card reveal">
+        <div class="rev-stars" data-stars="5"></div>
+        <blockquote>"Broke down towing the boat at Ōpua on a Sunday. Rang Monday 8am, they squeezed us in and we made the ferry home. Top service."</blockquote>
+        <p class="rev-meta"><strong>Grant W</strong> · Ōpua</p>
+      </article>
+    </div>
+    <div class="rev-more reveal">
+      <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&query=Haruru+Auto+%26+Diesel+Paihia" target="_blank" rel="noopener">See our Google reviews
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEW BANNER -->
+<section id="leave-review">
+  <div class="wrap lr-inner">
+    <div class="reveal">
+      <h2>Happy with our work? Leave us a review</h2>
+      <p>A quick Google review helps other Bay of Islands drivers find a workshop they can trust.</p>
+    </div>
+    <a class="btn btn-solid reveal" href="https://www.google.com/maps/search/?api=1&query=Haruru+Auto+%26+Diesel+Paihia" target="_blank" rel="noopener">Leave a Google review</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec-pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <h2>Book your vehicle in</h2>
+      <p>Ring the workshop or flick us an email. We answer during workshop hours, Monday to Friday.</p>
+    </div>
+    <div class="contact-card reveal">
+      <div class="contact-map">
+        <iframe title="Map showing Haruru Auto and Diesel, 10 Te Kahu Street, Haruru" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Haruru%20Auto%20%26%20Diesel%2C%2010%20Te%20Kahu%20Street%2C%20Haruru%2C%20Paihia&output=embed"></iframe>
+      </div>
+      <div class="contact-info">
+        <a class="btn btn-solid" href="tel:+6494027951">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call 09 402 7951</a>
+        <a class="btn btn-ghost" data-gmail data-user="haruruautoservice" data-domain="gmail.com" data-su="Booking%20enquiry%20from%20the%20website" href="#contact">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="0"/><path d="m22 7-10 6L2 7"/></svg>
+          Email the workshop</a>
+        <div class="c-rows">
+          <div class="c-row">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><span class="c-label">Workshop</span>10 Te Kahu Street, Haruru, Paihia 0204</div>
+          </div>
+          <div class="c-row">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><span class="c-label">Phone</span><a href="tel:+6494027951">09 402 7951</a> · <a href="tel:0800288643">0800 288 643</a></div>
+          </div>
+          <div class="c-row">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div><span class="c-label">Hours</span>Monday to Friday, 8:00am to 5:00pm</div>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="https://www.facebook.com/people/Haruru-Auto-Diesel/61583702106326/" target="_blank" rel="noopener" aria-label="Haruru Auto and Diesel on Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.09 24 18.1 24 12.07z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/explore/search/keyword/?q=haruru%20auto%20diesel" target="_blank" rel="noopener" aria-label="Search Haruru Auto and Diesel on Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.88 5.88 0 0 0-2.13 1.38A5.88 5.88 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13a5.88 5.88 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.88 5.88 0 0 0 2.13-1.38 5.88 5.88 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.88 5.88 0 0 0-1.38-2.13A5.88 5.88 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A3.99 3.99 0 1 1 16 12a3.99 3.99 0 0 1-4 3.99zM19.85 5.6a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top">Haruru <span>Auto &amp; Diesel</span></a>
+        <p>WOF, servicing, tyres and repairs for Paihia, Haruru, Waitangi, Ōpua and the wider Bay of Islands.</p>
+      </div>
+      <div class="foot-col">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">Workshop</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h3>Follow</h3>
+        <div class="socials">
+          <a href="https://www.facebook.com/people/Haruru-Auto-Diesel/61583702106326/" target="_blank" rel="noopener" aria-label="Haruru Auto and Diesel on Facebook">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.09 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.7 4.53-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.89v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.09 24 18.1 24 12.07z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/explore/search/keyword/?q=haruru%20auto%20diesel" target="_blank" rel="noopener" aria-label="Search Haruru Auto and Diesel on Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.72 3.72 0 0 1-1.38-.9 3.72 3.72 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63a5.88 5.88 0 0 0-2.13 1.38A5.88 5.88 0 0 0 .63 4.14C.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.8.72 1.47 1.38 2.13a5.88 5.88 0 0 0 2.13 1.38c.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56a5.88 5.88 0 0 0 2.13-1.38 5.88 5.88 0 0 0 1.38-2.13c.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91a5.88 5.88 0 0 0-1.38-2.13A5.88 5.88 0 0 0 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84zm0 10.15A3.99 3.99 0 1 1 16 12a3.99 3.99 0 0 1-4 3.99zM19.85 5.6a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>&copy; <span id="year"></span> Haruru Auto &amp; Diesel (2025) Ltd. All rights reserved.</p>
+      <p>10 Te Kahu Street, Haruru, Paihia</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* intro overlay */
+  var intro = document.getElementById('intro');
+  window.addEventListener('load', function(){
+    setTimeout(function(){ intro.classList.add('done'); }, reduce ? 0 : 900);
+  });
+  setTimeout(function(){ intro.classList.add('done'); }, 2600);
+
+  /* star rows */
+  document.querySelectorAll('[data-stars]').forEach(function(el){
+    var n = parseInt(el.getAttribute('data-stars'),10) || 5, html = '';
+    for(var i=0;i<n;i++){
+      html += '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+    }
+    el.innerHTML = html;
+  });
+
+  /* hero slide rotation */
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.hero-slides img'));
+  if(!reduce && slides.length > 1){
+    var si = 0;
+    setInterval(function(){
+      slides[si].classList.remove('on');
+      si = (si+1) % slides.length;
+      slides[si].classList.add('on');
+    }, 6000);
+  }
+
+  /* hero review rotation */
+  var quotes = Array.prototype.slice.call(document.querySelectorAll('.hr-quote'));
+  if(!reduce && quotes.length > 1){
+    var qi = 0;
+    setInterval(function(){
+      quotes[qi].classList.remove('on');
+      qi = (qi+1) % quotes.length;
+      quotes[qi].classList.add('on');
+    }, 6500);
+  }
+
+  /* scroll reveals */
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('vis'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('vis'); });
+  }
+
+  /* mobile menu */
+  var toggle = document.getElementById('navToggle'), menu = document.getElementById('mobileMenu');
+  toggle.addEventListener('click', function(){
+    var open = menu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ menu.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); });
+  });
+
+  /* gmail compose buttons */
+  document.querySelectorAll('a[data-gmail]').forEach(function(a){
+    var to = a.getAttribute('data-user') + '@' + a.getAttribute('data-domain');
+    a.href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(to) + '&su=' + (a.getAttribute('data-su')||'') + '&body=' + (a.getAttribute('data-body')||'');
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
