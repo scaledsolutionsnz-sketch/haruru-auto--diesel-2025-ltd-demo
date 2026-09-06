@@ -8,8 +8,9 @@
 <meta property="og:title" content="Haruru Auto &amp; Diesel | Mechanic &amp; WOF, Paihia">
 <meta property="og:description" content="WOF, servicing and diesel repairs at Haruru Falls, five minutes from Paihia. Call 09 402 7951.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="img/ext-day.jpg">
+<meta property="og:image" content="https://haruru-auto-diesel-2025-ltd-demo.vercel.app/img/ext-day-lg.webp">
 <link rel="icon" type="image/png" href="img/logo.png">
+<link rel="preload" as="image" imagesrcset="img/ext-day-m.webp 840w, img/ext-day-lg.webp 1400w, img/ext-day.jpg 1800w" imagesizes="100vw" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -125,6 +126,11 @@ header{
   margin-bottom:18px;
 }
 .hero-eyebrow::before{content:"";display:block;width:34px;height:2px;background:var(--accent)}
+.hero-stickers{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;text-decoration:none}
+.hs-chip{display:inline-flex;align-items:center;justify-content:center;height:44px;padding:6px 12px;background:rgba(255,255,255,.94);border-radius:8px;transition:transform .25s ease}
+.hs-chip img{max-height:30px;width:auto;display:block}
+.hero-stickers:hover .hs-chip{transform:translateY(-2px)}
+@media (max-width:520px){.hs-chip{height:38px;padding:5px 9px}.hs-chip img{max-height:26px}}
 .hero h1{
   font-size:clamp(2.5rem,5.5vw,3.8rem);font-weight:700;color:#fff;
   max-width:15ch;margin-bottom:18px;
@@ -317,14 +323,14 @@ footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30p
 <body>
 
 <div id="intro" aria-hidden="true">
-  <img src="img/logo.png" alt="" width="360" height="360">
+  <img src="img/logo.webp" alt="" width="512" height="512">
   <div class="mark">Haruru <span>Auto &amp; Diesel</span></div>
   <div class="bar"></div>
 </div>
 
 <header>
   <nav class="nav" aria-label="Main">
-    <a class="logo" href="#top"><img src="img/logo.png" alt="" width="360" height="360">Haruru <span>Auto &amp; Diesel</span></a>
+    <a class="logo" href="#top"><img src="img/logo.webp" alt="" width="512" height="512">Haruru <span>Auto &amp; Diesel</span></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#about">Workshop</a></li>
@@ -354,9 +360,9 @@ footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30p
 <!-- HERO -->
 <section class="hero">
   <div class="hero-slides" aria-hidden="true">
-    <img class="on" src="img/ext-day.jpg" alt="" fetchpriority="high" width="1800" height="1350">
-    <img src="img/fleet.jpg" alt="" loading="lazy" width="1800" height="1350">
-    <img src="img/ext-rain.jpg" alt="" loading="lazy" width="1800" height="1350">
+    <img class="on" src="img/ext-day.jpg" srcset="img/ext-day-m.webp 840w, img/ext-day-lg.webp 1400w, img/ext-day.jpg 1800w" sizes="100vw" alt="" fetchpriority="high" width="1800" height="1350">
+    <img src="img/fleet.jpg" srcset="img/fleet-m.webp 840w, img/fleet-lg.webp 1400w, img/fleet.jpg 1800w" sizes="100vw" alt="" loading="lazy" width="1800" height="1350">
+    <img src="img/ext-rain.jpg" srcset="img/ext-rain-m.webp 840w, img/ext-rain-lg.webp 1400w, img/ext-rain.jpg 1800w" sizes="100vw" alt="" loading="lazy" width="1800" height="1350">
   </div>
   <div class="hero-inner">
     <p class="hero-eyebrow">Haruru Falls, Bay of Islands</p>
@@ -388,6 +394,12 @@ footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30p
       </div>
       </div>
     </div>
+    <a class="hero-stickers" href="#brands" aria-label="Our accreditations">
+      <span class="hs-chip"><img src="img/brand-mta.png" alt="MTA Assured" width="420" height="420" loading="lazy"></span>
+      <span class="hs-chip"><img src="img/brand-ass.webp" alt="Auto Super Shoppes" width="640" height="321" loading="lazy"></span>
+      <span class="hs-chip"><img src="img/brand-castrol.png" alt="Castrol Service Centre" width="420" height="140" loading="lazy"></span>
+      <span class="hs-chip"><img src="img/brand-kumho.png" alt="Kumho Tyre stockist" width="420" height="154" loading="lazy"></span>
+    </a>
   </div>
 </section>
 
@@ -455,7 +467,7 @@ footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30p
 <section id="about" class="sec-pad">
   <div class="wrap about-grid">
     <div class="about-ph reveal">
-      <img loading="lazy" src="img/reception.jpg" alt="The reception counter at Haruru Auto and Diesel" width="1800" height="1350">
+      <img loading="lazy" src="img/reception.jpg" srcset="img/reception-m.webp 840w, img/reception.jpg 1800w" sizes="(min-width:900px) 50vw, 100vw" alt="The reception counter at Haruru Auto and Diesel" width="1800" height="1350">
     </div>
     <div class="about-copy reveal">
       <h2>The local workshop at Haruru Falls</h2>
