@@ -166,6 +166,10 @@ header{
 section{position:relative}
 .sec-pad{padding:90px 0}
 .sec-head{margin-bottom:48px}
+/* The crew section is a placeholder with nothing under its heading, so it does
+   not need the 48px that exists to separate a heading from a grid. Drops out
+   on its own once real team cards go in. */
+#crew .sec-head:only-child{margin-bottom:0}
 .sec-head h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:700}
 .sec-head p{margin-top:12px;max-width:60ch}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.3,1)}
@@ -222,6 +226,9 @@ section{position:relative}
   display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
   border:1px solid var(--line);padding:5px 12px;color:var(--txt-mute-dark);margin-bottom:14px;
 }
+/* Kept on purpose although nothing uses them yet: the crew section is a
+   placeholder until the workshop sends real names, and these are what the
+   cards go back to using when it does. */
 .crew-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
 .crew-card{border:1px solid var(--line);padding:34px 24px;text-align:center;background:var(--ink);transition:border-color .25s}
 .crew-card:hover{border-color:var(--accent)}
@@ -543,26 +550,15 @@ footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30p
 </section>
 
 <!-- CREW -->
+<!-- Deliberately a placeholder that SAYS it is one. The three role cards here
+     before were invented, and an invented crew on a real workshop's site is
+     worse than an empty space. This asks for the real thing instead. -->
 <section id="crew" class="sec-pad">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="badge">The workshop</span>
+      <span class="badge">Your team</span>
       <h2>Who is on the tools</h2>
-      <p>A small crew that knows the vehicles of the Bay because they drive the same roads.</p>
-    </div>
-    <div class="crew-grid">
-      <div class="crew-card reveal">
-        <h3>Owner / Lead Technician</h3>
-        <p>Runs the workshop, quotes the jobs and does the diagnostic head-scratching.</p>
-      </div>
-      <div class="crew-card reveal">
-        <h3>Workshop Technician</h3>
-        <p>Servicing, brakes, tyres and the steady flow of WOF repairs.</p>
-      </div>
-      <div class="crew-card reveal">
-        <h3>Service &amp; Bookings</h3>
-        <p>Answers the phone, books you in and keeps the parts orders moving.</p>
-      </div>
+      <p>This is the space for your team. Names, photos and a line each on who does what, so people know who they are handing the keys to before they ring. Send us who you want on here and we will put it together.</p>
     </div>
   </div>
 </section>
