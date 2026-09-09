@@ -238,8 +238,25 @@ section{position:relative}
 #reviews{background:var(--bone);color:var(--txt-on-light)}
 #reviews .badge{border-color:var(--line-dark);color:var(--txt-mute-light)}
 #reviews .sec-head p{color:var(--txt-mute-light)}
-.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:40px}
-.rev-card{background:var(--paper);border:1px solid var(--line-dark);padding:26px}
+/* The score carries the proof, the cards carry the voice. Both link out to
+   Google so anybody can check the number rather than take our word for it. */
+.rev-score{display:inline-flex;align-items:center;gap:16px;background:var(--paper);border:1px solid var(--line-dark);padding:16px 24px;margin-bottom:30px;transition:border-color .25s,transform .25s}
+.rev-score:hover{border-color:var(--accent-deep);transform:translateY(-2px)}
+.rs-mark{flex:none}
+.rs-num{font-size:2.1rem;font-weight:700;line-height:1;color:var(--txt-on-light);font-variant-numeric:tabular-nums}
+.rs-body{display:grid;gap:5px}
+.rs-body .rev-stars{margin-bottom:0}
+.rs-count{font-size:.84rem;letter-spacing:.05em;text-transform:uppercase;color:var(--txt-mute-light)}
+/* Every card the same height. align-items:start would cancel the 1fr rows and
+   leave the grid ragged; the name is pinned to the bottom with margin-top:auto
+   so the extra space under a short quote reads as deliberate. */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:40px;grid-auto-rows:1fr}
+.rev-card{background:var(--paper);border:1px solid var(--line-dark);padding:26px;display:flex;flex-direction:column}
+.rev-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.g-mark{flex:none}
+.rev-card .rev-meta{margin-top:auto}
+.hero-review .hr-tag{display:flex;align-items:center;gap:7px}
+.g-mini{flex:none}
 .rev-stars{display:flex;gap:3px;color:var(--accent-deep);margin-bottom:12px}
 .rev-card blockquote{font-size:.98rem;color:var(--txt-on-light);margin-bottom:14px}
 .rev-meta{font-size:.88rem;color:var(--txt-mute-light)}
@@ -323,6 +340,16 @@ footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30p
 </head>
 <body>
 
+<!-- The Google mark, defined once and reused wherever a real review is credited. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="g-mark" viewBox="0 0 48 48">
+    <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+    <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+    <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z"/>
+    <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+  </symbol>
+</svg>
+
 <div id="intro" aria-hidden="true">
   <img src="img/logo.webp" alt="" width="512" height="512">
   <div class="mark">Haruru <span>Auto &amp; Diesel</span></div>
@@ -376,22 +403,22 @@ footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30p
       <a class="btn btn-ghost" href="#contact">Get a quote</a>
     </div>
     <div class="hero-review" aria-live="polite">
-      <p class="hr-tag">Example reviews</p>
+      <p class="hr-tag"><svg class="g-mini" width="14" height="14" aria-hidden="true"><use href="#g-mark"/></svg> 4.8 on Google, 71 reviews</p>
       <div class="hr-stage">
       <div class="hr-quote on">
         <div class="hr-stars" data-stars="5"></div>
-        <p class="hr-text">"Booked a WOF Monday, sorted by smoko. Fair price too."</p>
-        <p class="hr-name">Tane M, Haruru</p>
+        <p class="hr-text">"Quote was bang on. Customer service was incredible."</p>
+        <p class="hr-name">Mary Read, Google review</p>
       </div>
       <div class="hr-quote">
         <div class="hr-stars" data-stars="5"></div>
-        <p class="hr-text">"They found the injector fault two other shops missed."</p>
-        <p class="hr-name">Rachael P, Kerikeri</p>
+        <p class="hr-text">"First class service. It doesn't get better than this."</p>
+        <p class="hr-name">Peter Ellott, Google review</p>
       </div>
       <div class="hr-quote">
         <div class="hr-stars" data-stars="5"></div>
-        <p class="hr-text">"Ute broke down towing the boat at Ōpua. They got us moving same day."</p>
-        <p class="hr-name">Grant W, Ōpua</p>
+        <p class="hr-text">"I trust them with my car fully and been with them for years."</p>
+        <p class="hr-name">Shayzan Rademacher, Google review</p>
       </div>
       </div>
     </div>
@@ -519,23 +546,20 @@ footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30p
 <section id="crew" class="sec-pad">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="badge">Example team</span>
+      <span class="badge">The workshop</span>
       <h2>Who is on the tools</h2>
       <p>A small crew that knows the vehicles of the Bay because they drive the same roads.</p>
     </div>
     <div class="crew-grid">
       <div class="crew-card reveal">
-        <div class="avatar">OW</div>
         <h3>Owner / Lead Technician</h3>
         <p>Runs the workshop, quotes the jobs and does the diagnostic head-scratching.</p>
       </div>
       <div class="crew-card reveal">
-        <div class="avatar">WT</div>
         <h3>Workshop Technician</h3>
         <p>Servicing, brakes, tyres and the steady flow of WOF repairs.</p>
       </div>
       <div class="crew-card reveal">
-        <div class="avatar">SB</div>
         <h3>Service &amp; Bookings</h3>
         <p>Answers the phone, books you in and keeps the parts orders moving.</p>
       </div>
@@ -547,29 +571,72 @@ footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30p
 <section id="reviews" class="sec-pad">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="badge">Example reviews</span>
+      <span class="badge">Reviews</span>
       <h2>What customers say</h2>
-      <p>Written as examples for this demo. The live site pulls the workshop's real Google reviews.</p>
+      <p>Every one of these was left by a real customer on Google. Nothing here is written by us.</p>
     </div>
+
+    <a class="rev-score reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Haruru+Auto+%26+Diesel+Paihia" target="_blank" rel="noopener">
+      <svg class="rs-mark" width="34" height="34" aria-hidden="true"><use href="#g-mark"/></svg>
+      <span class="rs-num">4.8</span>
+      <span class="rs-body">
+        <span class="rev-stars" data-stars="5"></span>
+        <span class="rs-count">71 Google reviews</span>
+      </span>
+    </a>
+
     <div class="rev-grid">
       <article class="rev-card reveal">
-        <div class="rev-stars" data-stars="5"></div>
-        <blockquote>"Booked a WOF on Monday, done by smoko Tuesday. Failed on a wiper blade, they swapped it on the spot instead of making me rebook. Fair price."</blockquote>
-        <p class="rev-meta"><strong>Tane M</strong> · Haruru</p>
+        <div class="rev-top">
+          <div class="rev-stars" data-stars="5"></div>
+          <svg class="g-mark" width="16" height="16" aria-hidden="true"><use href="#g-mark"/></svg>
+        </div>
+        <blockquote>"Absolutely brilliant service! Quote was bang on. Customer service was incredible, picked us up and dropped us off because we only had one car at the time. A great team, but particular shout out to Jason, Jacob and Lauren for looking after us."</blockquote>
+        <p class="rev-meta"><strong>Mary Read</strong> · Google review</p>
       </article>
       <article class="rev-card reveal">
-        <div class="rev-stars" data-stars="5"></div>
-        <blockquote>"Our Hilux had an injector fault two other shops could not find. These guys traced it in an afternoon and had us back on the farm by Friday."</blockquote>
-        <p class="rev-meta"><strong>Rachael P</strong> · Kerikeri</p>
+        <div class="rev-top">
+          <div class="rev-stars" data-stars="5"></div>
+          <svg class="g-mark" width="16" height="16" aria-hidden="true"><use href="#g-mark"/></svg>
+        </div>
+        <blockquote>"First class service, from reception taking the booking to quoting and explanation, a text reminder about the booking and then the mechanical repairs on the day. Fully explained and future things to look for noted. It doesn't get better than this."</blockquote>
+        <p class="rev-meta"><strong>Peter Ellott</strong> · Local Guide on Google</p>
       </article>
       <article class="rev-card reveal">
-        <div class="rev-stars" data-stars="5"></div>
-        <blockquote>"Broke down towing the boat at Ōpua on a Sunday. Rang Monday 8am, they squeezed us in and we made the ferry home. Top service."</blockquote>
-        <p class="rev-meta"><strong>Grant W</strong> · Ōpua</p>
+        <div class="rev-top">
+          <div class="rev-stars" data-stars="5"></div>
+          <svg class="g-mark" width="16" height="16" aria-hidden="true"><use href="#g-mark"/></svg>
+        </div>
+        <blockquote>"They are just the best. I trust them with my car fully and been with them for years. Quality work at a fair price and guarantee, they stand behind their work and great service."</blockquote>
+        <p class="rev-meta"><strong>Shayzan Rademacher</strong> · Local Guide on Google</p>
+      </article>
+      <article class="rev-card reveal">
+        <div class="rev-top">
+          <div class="rev-stars" data-stars="5"></div>
+          <svg class="g-mark" width="16" height="16" aria-hidden="true"><use href="#g-mark"/></svg>
+        </div>
+        <blockquote>"Brilliant, vehicle was serviced today, drives like new again. Last minute change saw us needing to move from a scheduled morning appointment to midday, this was no problem at all to them. Communication is spot on and pricing is very reasonable."</blockquote>
+        <p class="rev-meta"><strong>Wayne Henderson</strong> · Local Guide on Google</p>
+      </article>
+      <article class="rev-card reveal">
+        <div class="rev-top">
+          <div class="rev-stars" data-stars="5"></div>
+          <svg class="g-mark" width="16" height="16" aria-hidden="true"><use href="#g-mark"/></svg>
+        </div>
+        <blockquote>"Had issues with my van and they got me in the same day to take a look. The crew were quick and friendly. They were the only shop to squeeze us in and were super helpful throughout the whole process."</blockquote>
+        <p class="rev-meta"><strong>Michael Trueman</strong> · Local Guide on Google</p>
+      </article>
+      <article class="rev-card reveal">
+        <div class="rev-top">
+          <div class="rev-stars" data-stars="5"></div>
+          <svg class="g-mark" width="16" height="16" aria-hidden="true"><use href="#g-mark"/></svg>
+        </div>
+        <blockquote>"Bradley and the team are awesome! Always receive top tier service and pricing to keep our vehicles well maintained and serviced throughout the year!"</blockquote>
+        <p class="rev-meta"><strong>Te Mihinga Tukariri</strong> · Google review</p>
       </article>
     </div>
     <div class="rev-more reveal">
-      <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&query=Haruru+Auto+%26+Diesel+Paihia" target="_blank" rel="noopener">See our Google reviews
+      <a class="btn btn-dark" href="https://www.google.com/maps/search/?api=1&amp;query=Haruru+Auto+%26+Diesel+Paihia" target="_blank" rel="noopener">Read all 71 on Google
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
       </a>
     </div>
@@ -749,6 +816,73 @@ footer{background:var(--ink);border-top:1px solid var(--line);padding:54px 0 30p
 
   document.getElementById('year').textContent = new Date().getFullYear();
 })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Haruru Auto & Diesel (2025) Ltd",
+  "description": "One stop mechanical workshop at Haruru Falls, five minutes from Paihia. WOF inspections, petrol and diesel servicing, brakes, tyres and repairs for the Bay of Islands.",
+  "url": "https://haruru-auto-diesel-2025-ltd-demo.vercel.app/",
+  "telephone": "+6494027951",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "10 Te Kahu Street",
+    "addressLocality": "Haruru, Paihia",
+    "addressRegion": "Northland",
+    "postalCode": "0204",
+    "addressCountry": "NZ"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "71",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "areaServed": [
+    {
+      "@type": "Place",
+      "name": "Paihia"
+    },
+    {
+      "@type": "Place",
+      "name": "Haruru"
+    },
+    {
+      "@type": "Place",
+      "name": "Waitangi"
+    },
+    {
+      "@type": "Place",
+      "name": "Ōpua"
+    },
+    {
+      "@type": "Place",
+      "name": "Kerikeri"
+    },
+    {
+      "@type": "Place",
+      "name": "Bay of Islands"
+    }
+  ],
+  "knowsAbout": [
+    "WOF inspections",
+    "Warrant of Fitness",
+    "Petrol vehicle servicing",
+    "Diesel vehicle servicing",
+    "Brake repairs",
+    "Tyres and wheel alignment",
+    "Pre purchase inspections",
+    "Air conditioning servicing",
+    "Diesel diagnostics",
+    "Campervan and motorhome servicing"
+  ],
+  "sameAs": [
+    "https://www.facebook.com/people/Haruru-Auto-Diesel/61583702106326/"
+  ]
+}
 </script>
 </body>
 </html>
